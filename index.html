@@ -29,9 +29,10 @@
          <fieldset id="deliveryinfo">
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" />
+            <input type="text" id="nameinput" name="name" onblur="Validation()"/>
+            <p id="nameAlert" style="color: red; visibility: hidden;">You Must Enter A Name</p>
             <label for="addrinput">Street Address:</label><sub>*</sub>
-            <input type="text" id="addrinput" name="address"  />
+            <input type="text" id="addrinput" name="address"/>
             <label for="cityinput">City:</label><sub>*</sub>
             <input type="text" id="cityinput" name="city"  />
             <label for="emailinput">Email:</label><sub>*</sub>
@@ -76,26 +77,34 @@
             </fieldset>
          </fieldset>
          <fieldset id="submitbutton">
-            <input type="submit" id="submitBtn" value="Add to Cart" /> <input type="reset" id="resetBtn" value="Clear Form" />
+            <input type="submit" id="submitBtn" value="Add to Cart"/> <input type="reset" id="resetBtn" value="Clear Form" />
          </fieldset>
       </form>
    </section>
    <script type="text/javascript">
-       var name = document.getElementByID("nameinput"),
-       streetAddress = document.getElementByID("addrinput"),
-       city = document.getElementByID("cityinput"),
-       email = document.getElementByID("emailinput"),
-       phone = document.getElementByID("phoneinput"),
-       thinCrust = document.getElementByID("thin"),
-       thickCrust = document.getElementByID("thick"),
-       size = document.getElementByID("size"),
-       cheese = document.getElementByID("cheese"),
-       pepperoni = document.getElementByID("pepperoni")
-       sausage = document.getElementByID("sausage"),
-       greenpep = document.getElementByID("greenpep"),
-       onion = document.getElementByID("onion"),
-       xcheese = document.getElementByID("xcheese"),
-       instructions = document.getElementByID("instructions");
+       var fullName = document.getElementById("nameinput"),
+       streetAddress = document.getElementById("addrinput"),
+       city = document.getElementById("cityinput"),
+       email = document.getElementById("emailinput"),
+       phone = document.getElementById("phoneinput"),
+       thinCrust = document.getElementById("thin"),
+       thickCrust = document.getElementById("thick"),
+       size = document.getElementById("size"),
+       cheese = document.getElementById("cheese"),
+       pepperoni = document.getElementById("pepperoni")
+       sausage = document.getElementById("sausage"),
+       greenpep = document.getElementById("greenpep"),
+       onion = document.getElementById("onion"),
+       xcheese = document.getElementById("xcheese"),
+       instructions = document.getElementById("instructions"),
+       hasANumber = new RegExp("/\d/");
+       function Validation(){
+            if(fullName.value == ""){
+                document.getElementById("nameAlert").style.visibility = "visible";
+            }else{
+                document.getElementById("nameAlert").style.visibility = "hidden";
+            }
+       }
    </script>
 </body>
 </html>
