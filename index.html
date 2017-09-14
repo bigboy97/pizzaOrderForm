@@ -7,7 +7,7 @@
       Author: Colin Hoffman
       Date:   *
 
-      Filename: index.htm
+      Filename: index.html
    -->
    <meta charset="utf-8" />
    <meta id="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +29,8 @@
          <fieldset id="deliveryinfo">
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" onblur="Validation()"/>
-            <p id="nameAlert" style="color: red; visibility: hidden;">You Must Enter A Name</p>
+            <input type="text" id="nameinput" name="name" onblur="nameValidation()"/>
+            <p id="nameAlert" style="color: red; visibility: hidden;"></p>
             <label for="addrinput">Street Address:</label><sub>*</sub>
             <input type="text" id="addrinput" name="address"/>
             <label for="cityinput">City:</label><sub>*</sub>
@@ -97,12 +97,25 @@
        onion = document.getElementById("onion"),
        xcheese = document.getElementById("xcheese"),
        instructions = document.getElementById("instructions"),
-       hasANumber = new RegExp("/\d/");
-       function Validation(){
+	   hasANumber = new RegExp("[0-9]+"),
+	   hasAOddChar = new RegExp("[!@#$%^&*()_+=<>?]+"),
+	   flg = true;
+       function nameValidation(){
             if(fullName.value == ""){
+				document.getElementById("nameAlert").textContent = "You Must Enter A Name!";
                 document.getElementById("nameAlert").style.visibility = "visible";
-            }else{
+				flg = false;
+            }else if(hasANumber.test(fullName.value)){
+				document.getElementById("nameAlert").textContent = "Names are not numbers!";
+				document.getElementById("nameAlert").style.visibility = "visible";
+				flg = false;
+			}else if(hasAOddChar.test(fullName.value)){
+				document.getElementById("nameAlert").textContent = "You can't put anthing crazy in your name!";
+				document.getElementById("nameAlert").style.visibility = "visible";
+				flg = false;
+			}else{
                 document.getElementById("nameAlert").style.visibility = "hidden";
+				flg = true;
             }
        }
    </script>
