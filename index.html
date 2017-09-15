@@ -29,16 +29,24 @@
          <fieldset id="deliveryinfo">
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" onblur="nameValidation()"/>
+            <input type="text" id="nameinput" name="name" onChange="enSub()" onblur="nameValidation()"/>
             <p id="nameAlert" style="color: red; visibility: hidden;"></p>
+            
             <label for="addrinput">Street Address:</label><sub>*</sub>
-            <input type="text" id="addrinput" name="address"/>
+            <input type="text" id="addrinput" name="address" onChange="enSub()" onblur="addrValidation()"/>
+            <p id="addrAlert" style="color: red; visibility: hidden;"></p>
+            
             <label for="cityinput">City:</label><sub>*</sub>
-            <input type="text" id="cityinput" name="city"  />
+            <input type="text" id="cityinput" name="city" onChange="enSub()" onblur="citValidation()"/>
+            <p id="citAlert" style="color: red; visibility: hidden;"></p>
+            
             <label for="emailinput">Email:</label><sub>*</sub>
-            <input type="email" id="emailinput" name="email"  />
+            <input type="email" id="emailinput" name="email" onChange="enSub()" onblur="emValidation()"/>
+            <p id="emAlert" style="color: red; visibility: hidden;"></p>
+            
             <label for="phoneinput">Phone:</label><sub>*</sub>
-            <input type="text" id="phoneinput" name="phone"  />
+            <input type="text" id="phoneinput" name="phone"  onChange="enSub()" onblur="phoneVal()"/>
+            <p id="phAlert" style="color: red; visibility: hidden;"></p>
          </fieldset>
          <fieldset id="orderinfo">
             <legend>Order</legend>
@@ -77,47 +85,157 @@
             </fieldset>
          </fieldset>
          <fieldset id="submitbutton">
-            <input type="submit" id="submitBtn" value="Add to Cart"/> <input type="reset" id="resetBtn" value="Clear Form" />
+            <input type="submit" id="submitBtn" value="Add to Cart" disabled/> <input type="reset" id="resetBtn" value="Clear Form" />
          </fieldset>
       </form>
    </section>
    <script type="text/javascript">
        var fullName = document.getElementById("nameinput"),
+		   
        streetAddress = document.getElementById("addrinput"),
-       city = document.getElementById("cityinput"),
+		   
+       elCity = document.getElementById("cityinput"),
+		   
        email = document.getElementById("emailinput"),
+		   
        phone = document.getElementById("phoneinput"),
+		   
        thinCrust = document.getElementById("thin"),
+		   
        thickCrust = document.getElementById("thick"),
+		   
        size = document.getElementById("size"),
+		   
        cheese = document.getElementById("cheese"),
-       pepperoni = document.getElementById("pepperoni")
+		   
+       pepperoni = document.getElementById("pepperoni"),
+		   
        sausage = document.getElementById("sausage"),
+		   
        greenpep = document.getElementById("greenpep"),
+		   
        onion = document.getElementById("onion"),
+		   
        xcheese = document.getElementById("xcheese"),
+		   
        instructions = document.getElementById("instructions"),
+		   
 	   hasANumber = new RegExp("[0-9]+"),
+		   
 	   hasAOddChar = new RegExp("[!@#$%^&*()_+=<>?]+"),
-	   flg = true;
+		   
+	   nameFlag = 0,
+		   
+	   addrFlag = 0,
+		   
+	   citFlag = 0,
+		   
+	   emailFlag = 0,
+		   
+	   phoneFlag = 0;
+	   
+	   window.onload = function() {
+  			document.getElementById("nameinput").focus();
+	   };
        function nameValidation(){
+		   
             if(fullName.value == ""){
 				document.getElementById("nameAlert").textContent = "You Must Enter A Name!";
                 document.getElementById("nameAlert").style.visibility = "visible";
-				flg = false;
+				nameFlag = 1;
+				
             }else if(hasANumber.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "Names are not numbers!";
 				document.getElementById("nameAlert").style.visibility = "visible";
 				flg = false;
+				
 			}else if(hasAOddChar.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "You can't put anthing crazy in your name!";
 				document.getElementById("nameAlert").style.visibility = "visible";
-				flg = false;
+				nameFlag = 1;
+				
 			}else{
                 document.getElementById("nameAlert").style.visibility = "hidden";
-				flg = true;
+				nameFlag = 0;
             }
-       }
+       }//end function
+	   function addrValidation(){
+		   
+		   if(streetAddress.value == ""){
+			   
+			   document.getElementById("addrAlert").textContent = "You must enter a address!";
+			   document.getElementById("addrAlert").style.visibility = "visible";
+			   addrFlag = 1;
+			   
+		   }else if(hasAOddChar.test(streetAddress.value)){
+			   
+				document.getElementById("addrAlert").textContent = "You can't put anthing crazy in your address!";
+				document.getElementById("addrAlert").style.visibility = "visible";
+			   addrFlag = 1;
+			   
+			}else{
+				
+			   document.getElementById("addrAlert").style.visibility = "hidden";
+				addrFlag = 0;
+		   }
+	   }//end function
+	   function citValidation(){
+		   if(elCity.value == ""){
+			   
+			   document.getElementById("citAlert").textContent = "You must enter a city!";
+			   document.getElementById("citAlert").style.visibility = "visible";
+			   citFlag = 1;
+			   
+		   }else if(hasANumber.test(elCity.value)){
+				document.getElementById("citAlert").textContent = "Cities are not numbers!";
+				document.getElementById("citAlert").style.visibility = "visible";
+			   citFlag = 1;
+				
+			}else if(hasAOddChar.test(elCity.value)){
+			   
+				document.getElementById("citAlert").textContent = "You can't put anthing crazy in your city name!";
+				document.getElementById("citAlert").style.visibility = "visible";
+				citFlag = 1;
+			   
+			}else{
+				
+			   document.getElementById("citAlert").style.visibility = "hidden";
+				citFlag = 0;
+		   }
+	   }//end function
+	   function emValidation(){
+		   
+            if(email.value == ""){
+				document.getElementById("emAlert").textContent = "You Must Enter A E-Mail!";
+                document.getElementById("emAlert").style.visibility = "visible";
+				email = 1;
+			}else{
+				
+			   document.getElementById("emAlert").style.visibility = "hidden";
+				emailFlag =0;
+		   }
+	   }//end function
+	   function phoneVal(){
+		   if(phone.value == ""){
+			   document.getElementById("phAlert").textContent = "You Must Enter A Phone Number";
+               document.getElementById("phAlert").style.visibility = "visible";
+			   phoneFlag = 1;
+		   }else if(!hasANumber.test(phone.value)){
+			   document.getElementById("phAlert").textContent = "You Must Enter A Phone NUMBER not phone letters!";
+               document.getElementById("phAlert").style.visibility = "visible";
+			   phoneFlag = 1;
+		   }
+		   else{
+				
+			   document.getElementById("phAlert").style.visibility = "hidden";
+			   phoneFlag = 0;
+		   }
+	   }//end function
+	   function enSub(){
+			   if(nameFlag + addrFlag + citFlag + emailFlag + phoneFlag == 0){
+			   document.getElementById("submitBtn").disabled = false;
+			   }
+	   }
    </script>
 </body>
 </html>
