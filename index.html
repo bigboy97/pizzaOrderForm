@@ -5,145 +5,235 @@
       JavaScript Hands-On Project
 
       Author: Colin Hoffman
-      Date:   *
+      Date: Friday, September 15th, 2017
 
       Filename: index.html
+      
+      Outcomes: Upon the completion of this project I learned about managing when functions should and shoulud not be
+      ran. If giving more time I would like to try and make the code more efficent and easir to understad. One thing that
+      I would do diffrently if I had to do this assiment agin is to make a better else if block for testing the feilds. In short,
+      I learned that planning code out on paper first can make writing it faster and more efficent.
    -->
    <meta charset="utf-8" />
    <meta id="viewport" content="width=device-width, initial-scale=1.0">
    <title>JavaScript Hands-On Project</title>
    <link rel="stylesheet" href="css/styles.css" />
-   
 </head>
 
 <body>
+ 
+  <!-- BEGIN HEAD -->
    <header>
       <h1>
          JavaScript Hands-On Project
       </h1>
    </header>
-
+	<!-- END HEAD -->
+  
    <section>
+     
       <h2>Pizza Order Form</h2>
-      <form>
+      
+      <!-- BEGINING OF ORDER FORM -->
+      
+      <form  onsubmit="return ready()" method="get" action="#">
+        
+        
+        
+        
+        
+        <!-- BEGINING OF FEILD SET FOR DELIVERY INFO-->
          <fieldset id="deliveryinfo">
+           
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" onChange="enSub()" onblur="nameValidation()"/>
+            <input type="text" id="nameinput" name="name" onChange="nameValidation()"/>
             <p id="nameAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="addrinput">Street Address:</label><sub>*</sub>
-            <input type="text" id="addrinput" name="address" onChange="enSub()" onblur="addrValidation()"/>
+            <input type="text" id="addrinput" name="address" onChange="addrValidation()"/>
             <p id="addrAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="cityinput">City:</label><sub>*</sub>
-            <input type="text" id="cityinput" name="city" onChange="enSub()" onblur="citValidation()"/>
+            <input type="text" id="cityinput" name="city" onChange="citValidation()"/>
             <p id="citAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="emailinput">Email:</label><sub>*</sub>
-            <input type="email" id="emailinput" name="email" onChange="enSub()" onblur="emValidation()"/>
+            <input type="email" id="emailinput" name="email" onChange="emValidation()"/>
             <p id="emAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="phoneinput">Phone:</label><sub>*</sub>
-            <input type="text" id="phoneinput" name="phone"  onChange="enSub()" onblur="phoneVal()"/>
+            <input type="text" id="phoneinput" name="phone" onChange="phoneVal()"/>
             <p id="phAlert" style="color: red; visibility: hidden;"></p>
+            
          </fieldset>
+         <!-- END OF FIELDSET FOR DELIVER INFORMATION -->
+         
+         
+         
+         
+         
+         
+         <!-- START OF FIELD SET FOR ORDER INFOR -->
          <fieldset id="orderinfo">
             <legend>Order</legend>
+            
+            
+            
+            <!-- START OF FIELDSET FOR CRUST TYPE -->
             <fieldset id="crustbox">
+              
+              <!-- CRUST SELECTION-->
+              
                <legend>Crust: <sub>*</sub></legend>
                <input type="radio" name="crust" id="thin" value="Thin" />
-               <label for="thin">Thin Crust</label>
+               <label for="thin" id="labelForThin">Thin Crust</label>
                <input type="radio" name="crust" id="thick" value="Deep Dish" />
-               <label for="thick">Deep Dish</label>
+               <label for="thick" id="labelForThick">Deep Dish</label>
+               
             </fieldset>
+            <!-- END OF FIELDSET FOR CRUST TYPE -->
+            
+            
+            
+            
+            
+            
+            
+            
+            <!-- SIZE SELECTION-->
+            
             <fieldset id="sizebox">
-               <legend>Size: <sub>*</sub></legend>
-               <select id="size" name="size">
+      
+			   <legend><span id="labelForSize">Size: </span><sub>*</sub></legend>
+              
+               <select id="size" name="size" onChange="wasClicked()">
+                  <option value="">--Select--</option>
                   <option value="small">Small</option>
                   <option value="medium">Medium</option>
                   <option value="large">Large</option>
                   <option value="XL">Extra Large</option>
                </select>
+               
             </fieldset>
+            <!-- END OF FIELDSET FOR SIZE-->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <!-- START OF FIELDSET FOR TOPPINGS TO BE ADDED-->
+            
             <fieldset id="toppingbox">
+              
+              <!-- TOPPING SELECTION -->
                <legend>Topping(s): <sub>*</sub></legend>
+               
                <input type="checkbox" id="cheese" name="toppings" value="Cheese" />
-               <label for="cheese">Cheese</label>
+               <label for="cheese" id="labelForCheese">Cheese</label>
+               
                <input type="checkbox" id="pepperoni" name="toppings" value="Pepperoni" />
-               <label for="pepperoni">Pepperoni</label>
+               <label for="pepperoni" id="lableForPepperoni">Pepperoni</label>
+               
                <input type="checkbox" id="sausage" name="toppings" value="Sausage" />
-               <label for="sausage">Sausage</label>
+               <label for="sausage" id="labelForSausage">Sausage</label>
+               
                <input type="checkbox" id="greenpep" name="toppings" value="Green Peppers" />
-               <label for="greenpep">Green Peppers</label>
+               <label for="greenpep" id="labelForGreen">Green Peppers</label>
+               
                <input type="checkbox" id="onion" name="toppings" value="Onions" />
-               <label for="onion">Onions</label>
+               <label for="onion" id="labelForOnion">Onions</label>
+               
                <input type="checkbox" id="xcheese" name="toppings" value="Extra Cheese" />
-               <label for="xcheese">Extra Cheese</label>
+               <label for="xcheese" id="labelForExtr">Extra Cheese</label>
+               
+               
+               
+               
+               
+               
+               <!-- SPECIAL INSTRUCTIONS FOR DELIVERY TEXT AREA-->
                <label for="instructions" id="instrlabel">Special Instructions:</label>
                <textarea id="instructions" name="instructions" rows="3" cols="60" placeholder="special requests, delivery details"></textarea>
+               
+               
+               
+               
+               
             </fieldset>
+            <!-- END OF FIELDSET FOR TOPPINGS-->
+            
          </fieldset>
+         <!-- END OF FIELDSET FOR ORDER-->
+         
+         
+         
+         
+         <!-- BEIGING OF FIELDSET FOR BUTTONS-->
          <fieldset id="submitbutton">
-            <input type="submit" id="submitBtn" value="Add to Cart" disabled/> <input type="reset" id="resetBtn" value="Clear Form" />
-         </fieldset>
+            <input type="submit" id="submitBtn" value="Add to Cart"/> <input type="reset" id="resetBtn" value="Clear Form" />
+         </fieldset><br>
+         <!-- END OF FIELDSET FOR BUTTONS-->
+         
+         
+         
+         
+         
       </form>
+      <!-- END OF ORDER FORM-->
+      
    </section>
+   <!-- END OF SECTION ENCOMPESING ORDER FORM -->
+   
+   <!-- BEGINING OF COLIN'S JAVA SCRIPT-->
+   
    <script type="text/javascript">
-       var fullName = document.getElementById("nameinput"),
-		   
-       streetAddress = document.getElementById("addrinput"),
-		   
-       elCity = document.getElementById("cityinput"),
-		   
-       email = document.getElementById("emailinput"),
-		   
-       phone = document.getElementById("phoneinput"),
-		   
-       thinCrust = document.getElementById("thin"),
-		   
-       thickCrust = document.getElementById("thick"),
-		   
-       size = document.getElementById("size"),
-		   
-       cheese = document.getElementById("cheese"),
-		   
-       pepperoni = document.getElementById("pepperoni"),
-		   
-       sausage = document.getElementById("sausage"),
-		   
-       greenpep = document.getElementById("greenpep"),
-		   
-       onion = document.getElementById("onion"),
-		   
-       xcheese = document.getElementById("xcheese"),
-		   
-       instructions = document.getElementById("instructions"),
-		   
-	   hasANumber = new RegExp("[0-9]+"),
-		   
-	   hasAOddChar = new RegExp("[!@#$%^&*()_+=<>?]+"),
-		   
-	   nameFlag = 0,
-		   
-	   addrFlag = 0,
-		   
-	   citFlag = 0,
-		   
-	   emailFlag = 0,
-		   
-	   phoneFlag = 0;
 	   
+	   
+	   
+	   
+	   		//HERE IS WHERE MY GLOBAL VARS ARE DELARED AND INIT
+       var fullName = document.getElementById("nameinput"), streetAddress = document.getElementById("addrinput"),
+		   elCity = document.getElementById("cityinput"), email = document.getElementById("emailinput"),
+		   phone = document.getElementById("phoneinput"), thinCrust = document.getElementById("thin"),
+		   thickCrust = document.getElementById("thick"), size = document.getElementById("size"),
+		   cheese = document.getElementById("cheese"), pepperoni = document.getElementById("pepperoni"),
+		   sausage = document.getElementById("sausage"), greenpep = document.getElementById("greenpep"),
+		   onion = document.getElementById("onion"), xcheese = document.getElementById("xcheese"),
+		   instructions = document.getElementById("instructions"),
+		   
+		   //HERE I CREATED RegExp OBJECTS TO HELP ME VALIDATE PARTS OF THE FORM
+		   hasANumber = new RegExp("[0-9]+"),
+		   hasAOddChar = new RegExp("[!@#$%^&*()_+=<>?]+"), hasAOddEmailChar = new RegExp("[!#$%^&*()?><=]+"),
+		   
+		   //THIS IS PART OF MY JARRY RIGED WAY OF CHECKING THE DROPDOWN BOX
+		   wasSizeClicked = 0;
+	   
+	   
+	   
+	   
+	   //THIS PUTS THE CURSUR IN THE FIRST FEILD IN THE FORM
 	   window.onload = function() {
   			document.getElementById("nameinput").focus();
 	   };
+	   
+	   
+	   
+	   
+	   
+	   //(START OF ONCHANGE FUNCTIONS) HERE I MADE FUNCTIONS TO CHECK EACH FIELD SEPERETLY AS IT IS BEING FILLED OUT
        function nameValidation(){
 		   
+		   //FIRST I CHECK TO SEE IF IT HAS A VALUE
             if(fullName.value == ""){
 				document.getElementById("nameAlert").textContent = "You Must Enter A Name!";
                 document.getElementById("nameAlert").style.visibility = "visible";
-				nameFlag = 1;
-				
+			
+			//NEXT I CHECK TO SEE IF THE USER ENTERED NUMBERS FOR A NAME
             }else if(hasANumber.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "Names are not numbers!";
 				document.getElementById("nameAlert").style.visibility = "visible";
@@ -152,90 +242,191 @@
 			}else if(hasAOddChar.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "You can't put anthing crazy in your name!";
 				document.getElementById("nameAlert").style.visibility = "visible";
-				nameFlag = 1;
-				
+			
+			//IF ALL THE TEST WHERE PASSED THE ERROR MESSEGE WILL BE SET TO HIDDEN
 			}else{
                 document.getElementById("nameAlert").style.visibility = "hidden";
-				nameFlag = 0;
             }
-       }//end function
+       }//END OF NAMEVALIDATION FUNCTION
+	   
+	   
+	   
+	   
+	   
 	   function addrValidation(){
 		   
+		   //HERE I CHECK FOR A VALUE
 		   if(streetAddress.value == ""){
 			   
 			   document.getElementById("addrAlert").textContent = "You must enter a address!";
 			   document.getElementById("addrAlert").style.visibility = "visible";
-			   addrFlag = 1;
 			   
+			//HERE I CHECK TO SEE IF THERE WAS ANY ODD CHARS ENTERED   
 		   }else if(hasAOddChar.test(streetAddress.value)){
 			   
 				document.getElementById("addrAlert").textContent = "You can't put anthing crazy in your address!";
 				document.getElementById("addrAlert").style.visibility = "visible";
-			   addrFlag = 1;
 			   
+			 //IF EVERYTHING PASSED THE MESSEGE IS SET TO HIDDEN  
 			}else{
 				
 			   document.getElementById("addrAlert").style.visibility = "hidden";
-				addrFlag = 0;
 		   }
-	   }//end function
+	   }//END OF ADDRVALIDATION FUNCTION
+	   
+	   
+	   
+	   
+	   
 	   function citValidation(){
+		   
+		   //HERE I CHECK IF THERE IS A VALUE
 		   if(elCity.value == ""){
 			   
 			   document.getElementById("citAlert").textContent = "You must enter a city!";
 			   document.getElementById("citAlert").style.visibility = "visible";
-			   citFlag = 1;
-			   
+			
+			//HERE I CHECK IF THERE WAS A NUMBER ENTERED
 		   }else if(hasANumber.test(elCity.value)){
+			   
 				document.getElementById("citAlert").textContent = "Cities are not numbers!";
 				document.getElementById("citAlert").style.visibility = "visible";
-			   citFlag = 1;
-				
+			
+			 //HERE I CHECK FOR ODD CHARS
 			}else if(hasAOddChar.test(elCity.value)){
 			   
 				document.getElementById("citAlert").textContent = "You can't put anthing crazy in your city name!";
 				document.getElementById("citAlert").style.visibility = "visible";
-				citFlag = 1;
 			   
+			//IF EVERYTHING PASSED MESSEGE IS HIDDEN
 			}else{
 				
 			   document.getElementById("citAlert").style.visibility = "hidden";
-				citFlag = 0;
 		   }
-	   }//end function
+	   }//END OF CITVALIDATION FUNCTION
+	   
+	   
+	   
+	   
+	   
+	   
 	   function emValidation(){
 		   
+		   //HERE I CHECK TO SEE IF EMAIL HAS A VALUE
             if(email.value == ""){
+				
 				document.getElementById("emAlert").textContent = "You Must Enter A E-Mail!";
                 document.getElementById("emAlert").style.visibility = "visible";
-				email = 1;
+			
+			//HERE I CHECK TO SEE IF THERE ARE ANY ODD CHARS FOR EMAILS THAT IS
+			}else if (hasAOddEmailChar.test(email.value)){
+				
+				document.getElementById("emAlert").textContent = "You Must Enter A E-Mail with out anthing crazy in it!";
+                document.getElementById("emAlert").style.visibility = "visible";
+				
+			//IF ALL PASSED MESSEGE IS HIDDEN	
 			}else{
 				
 			   document.getElementById("emAlert").style.visibility = "hidden";
-				emailFlag =0;
 		   }
-	   }//end function
+	   }//END OF EMVALIDATION
+	   
+	   
+	   
+	   
+	   
 	   function phoneVal(){
+		   
+		   //HERE IF CHECKED IF IT HAD A VALUE
 		   if(phone.value == ""){
 			   document.getElementById("phAlert").textContent = "You Must Enter A Phone Number";
                document.getElementById("phAlert").style.visibility = "visible";
-			   phoneFlag = 1;
+			   
+			//HERE I CHECKED IF THE INPUT WAS IS A NUMBER
 		   }else if(!hasANumber.test(phone.value)){
 			   document.getElementById("phAlert").textContent = "You Must Enter A Phone NUMBER not phone letters!";
                document.getElementById("phAlert").style.visibility = "visible";
-			   phoneFlag = 1;
 		   }
+		   
+		   //IF PASSED MESSEGE IS HIDDEN
 		   else{
 				
 			   document.getElementById("phAlert").style.visibility = "hidden";
-			   phoneFlag = 0;
 		   }
-	   }//end function
-	   function enSub(){
-			   if(nameFlag + addrFlag + citFlag + emailFlag + phoneFlag == 0){
-			   document.getElementById("submitBtn").disabled = false;
-			   }
+	   }//END OF PHONEVAL
+	   
+	   
+	   //THIS IS THE END OF THE SECTION OF MY JAVASCRIPT CODE WHERE I WRITTEN INDIVIDUAL TESTS
+	   
+	   
+	   //THIS IS THE READY FUNCTION WHICH IS CALLED ON SUBMISSION OF THE FORM
+	   function ready(){
+		   
+		   //THESE VARS COULD NOT BE DECLARED GLOBALY, SINCE THEY NEED TO BE SET AT THE TIME THE FUNCTION IS CALLED
+		    var thnCrust = document.getElementById("thin").checked,
+		   		dpDish = document.getElementById("thick").checked,
+				isChz = document.getElementById("cheese").checked,
+		   		isPep = document.getElementById("pepperoni").checked,
+				isSus = document.getElementById("sausage").checked,
+		   		isGre = document.getElementById("greenpep").checked,
+				isOin = document.getElementById("onion").checked,
+				isExt = document.getElementById("xcheese").checked;
+		   
+		   //HERE IS AN IF ELSE BLOCK THAT CHECKS PORTIONS OF THE CODE I WAS NOT SURE HOW TO TEST INDIVIDUALY
+		   
+		   
+		   //TESTING IF A RADIO BUTTON WAS SET
+		   if(thnCrust === false && dpDish === false){
+			   
+			   document.getElementById("labelForThin").style.color = "red";
+			   document.getElementById("labelForThick").style.color = "red";
+			   alert("Please take care of your errors first.");
+			   return false;
+			   
+			 //TESTING IF THE DROPDOWN SELECTION BOX WAS CLICKED  
+		   	}else if(wasSizeClicked == 0){
+				
+				document.getElementById("labelForSize").style.color = "red";
+				alert("Please take care of your errors first.");
+				return false;
+			
+			//TESTING IF ONE OF THE CHECKBOXES WERE CHECKED	
+	   		}else if(isChz === false && isPep === false && isSus === false && isGre === false && isOin === false && isExt === false){
+				
+				document.getElementById("labelForCheese").style.color = "red";
+				document.getElementById("lableForPepperoni").style.color = "red";
+				document.getElementById("labelForSausage").style.color = "red";
+				document.getElementById("labelForGreen").style.color = "red";
+				document.getElementById("labelForOnion").style.color = "red";
+				document.getElementById("labelForExtr").style.color = "red";
+				alert("Please take care of your errors first.");
+				return false;
+				
+			//THIS TEST IF ANY OF THE ERROR MESSEGES WERE LEFT	
+			}else if(document.getElementById("nameAlert").style.visibility === "hidden" && document.getElementById("addrAlert").style.visibility === "hidden" && document.getElementById("citAlert").style.visibility === "hidden" && document.getElementById("emAlert").style.visibility === "hidden" && document.getElementById("phAlert").style.visibility === "hidden"){
+			return true;
+				
+			//FAIL SAFE \(0O)/	
+		   }else{
+			   alert("Please take care of your errors first.");
+			   return false;
+		   }
+	   }//THIS IS THE END OF MY ELSE IF BLOCK
+	   
+	   
+	   
+	   //THIS IS MY ODD WAY OF CHECKING IF THE CHECKBOX WAS CLICKED
+	   function wasClicked(){
+		   //THIS VAR WAS DECLARED AND INIT WITH A GLOB SCOPE
+		   ++wasSizeClicked;
 	   }
+	   
+	   
+	   
    </script>
+   <!-- END OF COLIN'S JAVASCRIPT -->
+   
+   
+   
 </body>
 </html>
