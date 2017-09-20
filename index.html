@@ -36,7 +36,7 @@
       
       <!-- BEGINING OF ORDER FORM -->
       
-      <form  onsubmit="return ready()" method="get" action="#">
+      <form onsubmit="return ready()" method="get" action="#">
         
         
         
@@ -47,23 +47,23 @@
            
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" onChange="nameValidation()"/>
+            <input type="text" id="nameinput" name="name" onChange="nameValidation()" onblur="nameValidation()"/>
             <p id="nameAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="addrinput">Street Address:</label><sub>*</sub>
-            <input type="text" id="addrinput" name="address" onChange="addrValidation()"/>
+            <input type="text" id="addrinput" name="address" onChange="addrValidation()" onblur="addrValidation()"/>
             <p id="addrAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="cityinput">City:</label><sub>*</sub>
-            <input type="text" id="cityinput" name="city" onChange="citValidation()"/>
+            <input type="text" id="cityinput" name="city" onChange="citValidation()" onblur="citValidation()"/>
             <p id="citAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="emailinput">Email:</label><sub>*</sub>
-            <input type="email" id="emailinput" name="email" onChange="emValidation()"/>
+            <input type="email" id="emailinput" name="email" onChange="emValidation()" onblur="emValidation()"/>
             <p id="emAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="phoneinput">Phone:</label><sub>*</sub>
-            <input type="text" id="phoneinput" name="phone" onChange="phoneVal()"/>
+            <input type="text" id="phoneinput" name="phone" onChange="phoneVal()" onblur="phoneVal()"/>
             <p id="phAlert" style="color: red; visibility: hidden;"></p>
             
          </fieldset>
@@ -90,6 +90,7 @@
                <label for="thin" id="labelForThin">Thin Crust</label>
                <input type="radio" name="crust" id="thick" value="Deep Dish" />
                <label for="thick" id="labelForThick">Deep Dish</label>
+               <p id="crustSizeAlert" style="color: red; visibility: hidden;"></p>
                
             </fieldset>
             <!-- END OF FIELDSET FOR CRUST TYPE -->
@@ -114,6 +115,8 @@
                   <option value="large">Large</option>
                   <option value="XL">Extra Large</option>
                </select>
+               
+               <p id="pizzaSizeDropDownAlert" style="color: red; visibility: hidden;"></p>
                
             </fieldset>
             <!-- END OF FIELDSET FOR SIZE-->
@@ -152,7 +155,7 @@
                <label for="xcheese" id="labelForExtr">Extra Cheese</label>
                
                
-               
+               <p id="toppingsCheckBoxAlert" style="color: red; visibility: hidden;"></p>
                
                
                
@@ -216,10 +219,10 @@
 	   
 	   
 	   
-	   //THIS PUTS THE CURSUR IN THE FIRST FEILD IN THE FORM
+/*	   //THIS PUTS THE CURSUR IN THE FIRST FEILD IN THE FORM
 	   window.onload = function() {
   			document.getElementById("nameinput").focus();
-	   };
+	   };*/
 	   
 	   
 	   
@@ -237,7 +240,6 @@
             }else if(hasANumber.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "Names are not numbers!";
 				document.getElementById("nameAlert").style.visibility = "visible";
-				flg = false;
 				
 			}else if(hasAOddChar.test(fullName.value)){
 				document.getElementById("nameAlert").textContent = "You can't put anthing crazy in your name!";
@@ -375,6 +377,51 @@
 		   //HERE IS AN IF ELSE BLOCK THAT CHECKS PORTIONS OF THE CODE I WAS NOT SURE HOW TO TEST INDIVIDUALY
 		   
 		   
+		   if((document.getElementById("nameAlert").style.visibility === "hidden" && document.getElementById("addrAlert").style.visibility === "hidden" && document.getElementById("citAlert").style.visibility === "hidden" && document.getElementById("emAlert").style.visibility === "hidden" && document.getElementById("phAlert").style.visibility === "hidden") && (fullName.value == "" && streetAddress.value == "" && elCity.value == "" && email.value == "" && phone.value == "")){
+			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("citAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("phAlert").textContent = "You Must Enter A Value!";
+			   
+               document.getElementById("nameAlert").style.visibility = "visible";
+			   document.getElementById("addrAlert").style.visibility = "visible";
+			   document.getElementById("citAlert").style.visibility = "visible";
+			   document.getElementById("emAlert").style.visibility = "visible";
+			   document.getElementById("phAlert").style.visibility = "visible";
+			   
+			   
+		   }else{
+			   document.getElementById("nameAlert").style.visibility = "hidden";
+			   document.getElementById("addrAlert").style.visibility = "hidden";
+			   document.getElementById("citAlert").style.visibility = "hidden";
+			   document.getElementById("emAlert").style.visibility = "hidden";
+			   document.getElementById("phAlert").style.visibility = "hidden";
+		   }
+		   if(thnCrust === false && dpDish === false){
+			   document.getElementById("crustSizeAlert").textContent = "You Must Select A Value!";
+			   document.getElementById("crustSizeAlert").style.visibility = "visible";
+			   
+		   }else{
+			   document.getElementById("crustSizeAlert").style.visibility = "hidden";
+		   }
+		   if(wasSizeClicked == 0){
+			   document.getElementById("pizzaSizeDropDownAlert").textContent = "You Must Select A Value!";
+			   document.getElementById("pizzaSizeDropDownAlert").style.visibility = "visible";
+			   
+		   }else{
+			  document.getElementById("pizzaSizeDropDownAlert").style.visibility = "hidden"; 
+		   }
+		   if(isChz === false && isPep === false && isSus === false && isGre === false && isOin === false && isExt === false){
+			   document.getElementById("toppingsCheckBoxAlert").textContent = "You Must Select A Value!";
+			   document.getElementById("toppingsCheckBoxAlert").style.visibility = "visible";
+			   
+		   }else{
+			   document.getElementById("toppingsCheckBoxAlert").style.visibility = "hidden";
+		   }
+			   return false;
+		   
+/*		   
 		   //TESTING IF A RADIO BUTTON WAS SET
 		   if(thnCrust === false && dpDish === false){
 			   
@@ -410,8 +457,8 @@
 		   }else{
 			   alert("Please take care of your errors first.");
 			   return false;
-		   }
-	   }//THIS IS THE END OF MY ELSE IF BLOCK
+		   }//THIS IS THE END OF MY ELSE IF BLOCK*/
+	   }
 	   
 	   
 	   
