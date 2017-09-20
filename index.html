@@ -377,26 +377,52 @@
 		   //HERE IS AN IF ELSE BLOCK THAT CHECKS PORTIONS OF THE CODE I WAS NOT SURE HOW TO TEST INDIVIDUALY
 		   
 		   
-		   if((document.getElementById("nameAlert").style.visibility === "hidden" && document.getElementById("addrAlert").style.visibility === "hidden" && document.getElementById("citAlert").style.visibility === "hidden" && document.getElementById("emAlert").style.visibility === "hidden" && document.getElementById("phAlert").style.visibility === "hidden") && (fullName.value == "" && streetAddress.value == "" && elCity.value == "" && email.value == "" && phone.value == "")){
+		   if(document.getElementById("nameAlert").style.visibility === "hidden" && fullName.value == ""){
 			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
-			   document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
-			   document.getElementById("citAlert").textContent = "You Must Enter A Value!";
-			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
-			   document.getElementById("phAlert").textContent = "You Must Enter A Value!";
-			   
                document.getElementById("nameAlert").style.visibility = "visible";
-			   document.getElementById("addrAlert").style.visibility = "visible";
-			   document.getElementById("citAlert").style.visibility = "visible";
-			   document.getElementById("emAlert").style.visibility = "visible";
-			   document.getElementById("phAlert").style.visibility = "visible";
-			   
-			   
-		   }else{
+		   }else if(fullName.value == ""){
+			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
+               document.getElementById("nameAlert").style.visibility = "visible";
+		   }
+		   else{
 			   document.getElementById("nameAlert").style.visibility = "hidden";
+		   }
+		   if(document.getElementById("addrAlert").style.visibility === "hidden" && streetAddress.value == ""){
+			   document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("addrAlert").style.visibility = "visible";
+		   }else if(streetAddress.value == ""){
+			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
+               document.getElementById("nameAlert").style.visibility = "visible";
+		   }else{
 			   document.getElementById("addrAlert").style.visibility = "hidden";
+		   }
+		   if(document.getElementById("citAlert").style.visibility === "hidden" && elCity.value == ""){
+			  document.getElementById("citAlert").textContent = "You Must Enter A Value!";
+			  document.getElementById("citAlert").style.visibility = "visible";
+		   }else if (elCity.value == ""){
+			  document.getElementById("citAlert").textContent = "You Must Enter A Value!";
+			  document.getElementById("citAlert").style.visibility = "visible"
+		   }
+		   else{
 			   document.getElementById("citAlert").style.visibility = "hidden";
+		   }
+		   if(document.getElementById("emAlert").style.visibility === "hidden" && email.value == ""){
+			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("emAlert").style.visibility = "visible";
+		   }else if(email.value == ""){
+			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
+			   document.getElementById("emAlert").style.visibility = "visible";
+		   }else{
 			   document.getElementById("emAlert").style.visibility = "hidden";
-			   document.getElementById("phAlert").style.visibility = "hidden";
+		   }
+		   if(document.getElementById("phAlert").style.visibility === "hidden" && phone.value == ""){
+			  document.getElementById("phAlert").textContent = "You Must Enter A Value!";
+			  document.getElementById("phAlert").style.visibility = "visible";
+		   }else if(phone.value == ""){
+			  document.getElementById("phAlert").textContent = "You Must Enter A Value!";
+			  document.getElementById("phAlert").style.visibility = "visible";
+		   }else{
+			  document.getElementById("phAlert").style.visibility = "hidden";
 		   }
 		   if(thnCrust === false && dpDish === false){
 			   document.getElementById("crustSizeAlert").textContent = "You Must Select A Value!";
