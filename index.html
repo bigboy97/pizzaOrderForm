@@ -63,7 +63,7 @@
             <p id="emAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="phoneinput">Phone:</label><sub>*</sub>
-            <input type="text" id="phoneinput" name="phone" onChange="phoneVal()" onblur="phoneVal()"/>
+            <input type="text" id="phoneinput" name="phone" placeholder="3332224444" onChange="phoneVal()" onblur="phoneVal()"/>
             <p id="phAlert" style="color: red; visibility: hidden;"></p>
             
          </fieldset>
@@ -348,8 +348,12 @@
 		   }else if(!hasANumber.test(phone.value)){
 			   document.getElementById("phAlert").textContent = "You Must Enter A Phone NUMBER not phone letters!";
                document.getElementById("phAlert").style.visibility = "visible";
+			   
+		   //HERE I AM CHECKING IF THE PHONENUMBER IS THEN DIGITS
+		   }else if(phone.value.length <= 10){
+			   document.getElementById("phAlert").textContent = "We only accept 10 digit phone numbers!";
+               document.getElementById("phAlert").style.visibility = "visible";
 		   }
-		   
 		   //IF PASSED MESSEGE IS HIDDEN
 		   else{
 				
@@ -375,8 +379,9 @@
 				isExt = document.getElementById("xcheese").checked;
 		   
 		   //HERE IS AN IF ELSE BLOCK THAT CHECKS PORTIONS OF THE CODE I WAS NOT SURE HOW TO TEST INDIVIDUALY
+		   //>>>>>>>>>>>>>>>You have to check if ther is a messege and a value<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		   
-		   
+		   //Errors with the name
 		   if(document.getElementById("nameAlert").style.visibility === "hidden" && fullName.value == ""){
 			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
                document.getElementById("nameAlert").style.visibility = "visible";
@@ -387,6 +392,8 @@
 		   else{
 			   document.getElementById("nameAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with address
 		   if(document.getElementById("addrAlert").style.visibility === "hidden" && streetAddress.value == ""){
 			   document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
 			   document.getElementById("addrAlert").style.visibility = "visible";
@@ -396,6 +403,8 @@
 		   }else{
 			   document.getElementById("addrAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with city
 		   if(document.getElementById("citAlert").style.visibility === "hidden" && elCity.value == ""){
 			  document.getElementById("citAlert").textContent = "You Must Enter A Value!";
 			  document.getElementById("citAlert").style.visibility = "visible";
@@ -406,6 +415,8 @@
 		   else{
 			   document.getElementById("citAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with Email
 		   if(document.getElementById("emAlert").style.visibility === "hidden" && email.value == ""){
 			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
 			   document.getElementById("emAlert").style.visibility = "visible";
@@ -415,6 +426,8 @@
 		   }else{
 			   document.getElementById("emAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with Phone
 		   if(document.getElementById("phAlert").style.visibility === "hidden" && phone.value == ""){
 			  document.getElementById("phAlert").textContent = "You Must Enter A Value!";
 			  document.getElementById("phAlert").style.visibility = "visible";
@@ -424,6 +437,8 @@
 		   }else{
 			  document.getElementById("phAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with radio
 		   if(thnCrust === false && dpDish === false){
 			   document.getElementById("crustSizeAlert").textContent = "You Must Select A Value!";
 			   document.getElementById("crustSizeAlert").style.visibility = "visible";
@@ -431,6 +446,8 @@
 		   }else{
 			   document.getElementById("crustSizeAlert").style.visibility = "hidden";
 		   }
+		   
+		   //Errors with size
 		   if(wasSizeClicked == 0){
 			   document.getElementById("pizzaSizeDropDownAlert").textContent = "You Must Select A Value!";
 			   document.getElementById("pizzaSizeDropDownAlert").style.visibility = "visible";
@@ -438,6 +455,8 @@
 		   }else{
 			  document.getElementById("pizzaSizeDropDownAlert").style.visibility = "hidden"; 
 		   }
+		   
+		   //Errors with toppings
 		   if(isChz === false && isPep === false && isSus === false && isGre === false && isOin === false && isExt === false){
 			   document.getElementById("toppingsCheckBoxAlert").textContent = "You Must Select A Value!";
 			   document.getElementById("toppingsCheckBoxAlert").style.visibility = "visible";
@@ -445,8 +464,12 @@
 		   }else{
 			   document.getElementById("toppingsCheckBoxAlert").style.visibility = "hidden";
 		   }
-			   return false;
 		   
+		   
+		   //Always returning false for testing purposes
+			   return false;
+
+//This is old code that is no longer being used, but is keept as a refrence just in case.
 /*		   
 		   //TESTING IF A RADIO BUTTON WAS SET
 		   if(thnCrust === false && dpDish === false){
@@ -484,8 +507,7 @@
 			   alert("Please take care of your errors first.");
 			   return false;
 		   }//THIS IS THE END OF MY ELSE IF BLOCK*/
-	   }
-	   
+	   }//This is the end of the ready() function
 	   
 	   
 	   //THIS IS MY ODD WAY OF CHECKING IF THE CHECKBOX WAS CLICKED
