@@ -36,7 +36,7 @@
       
       <!-- BEGINING OF ORDER FORM -->
       
-      <form onsubmit="return ready()" method="get" action="#">
+      <form onsubmit="return ready()" method="get" action="orderComplete.html">
         
         
         
@@ -47,19 +47,19 @@
            
             <legend>Delivery Information (<sub>*</sub> required field)</legend>
             <label for="nameinput">Name:</label><sub>*</sub>
-            <input type="text" id="nameinput" name="name" onChange="nameValidation()" onblur="nameValidation()"/>
+            <input type="text" id="nameinput" name="name" placeholder="John Doe" onChange="nameValidation()" onblur="nameValidation()"/>
             <p id="nameAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="addrinput">Street Address:</label><sub>*</sub>
-            <input type="text" id="addrinput" name="address" onChange="addrValidation()" onblur="addrValidation()"/>
+            <input type="text" id="addrinput" name="address" placeholder="1234 River Road" onChange="addrValidation()" onblur="addrValidation()"/>
             <p id="addrAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="cityinput">City:</label><sub>*</sub>
-            <input type="text" id="cityinput" name="city" onChange="citValidation()" onblur="citValidation()"/>
+            <input type="text" id="cityinput" name="city" placeholder="Philadelphia" onChange="citValidation()" onblur="citValidation()"/>
             <p id="citAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="emailinput">Email:</label><sub>*</sub>
-            <input type="email" id="emailinput" name="email" onChange="emValidation()" onblur="emValidation()"/>
+            <input type="text" id="emailinput" name="email" placeholder="example@domain.com" onChange="emValidation()" onblur="emValidation()"/>
             <p id="emAlert" style="color: red; visibility: hidden;"></p>
             
             <label for="phoneinput">Phone:</label><sub>*</sub>
@@ -350,7 +350,7 @@
                document.getElementById("phAlert").style.visibility = "visible";
 			   
 		   //HERE I AM CHECKING IF THE PHONENUMBER IS THEN DIGITS
-		   }else if(phone.value.length <= 10){
+		   }else if(phone.value.length != 10){
 			   document.getElementById("phAlert").textContent = "We only accept 10 digit phone numbers!";
                document.getElementById("phAlert").style.visibility = "visible";
 		   }
@@ -385,8 +385,11 @@
 		   if(document.getElementById("nameAlert").style.visibility === "hidden" && fullName.value == ""){
 			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
                document.getElementById("nameAlert").style.visibility = "visible";
-		   }else if(fullName.value == ""){
-			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
+		   }else if(document.getElementById("nameAlert").style.visibility === "visible" && fullName.value == ""){
+				document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
+            	document.getElementById("nameAlert").style.visibility = "visible";
+		   }else if(fullName.value != "" && document.getElementById("nameAlert").style.visibility === "visible"){
+			   document.getElementById("nameAlert").textContent = "You forgot to fix your error!";
                document.getElementById("nameAlert").style.visibility = "visible";
 		   }
 		   else{
@@ -397,9 +400,12 @@
 		   if(document.getElementById("addrAlert").style.visibility === "hidden" && streetAddress.value == ""){
 			   document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
 			   document.getElementById("addrAlert").style.visibility = "visible";
-		   }else if(streetAddress.value == ""){
-			   document.getElementById("nameAlert").textContent = "You Must Enter A Value!";
-               document.getElementById("nameAlert").style.visibility = "visible";
+		   }else if(document.getElementById("addrAlert").style.visibility === "visible" && streetAddress.value == ""){
+			document.getElementById("addrAlert").textContent = "You Must Enter A Value!";
+			document.getElementById("addrAlert").style.visibility = "visible";
+		   }else if(streetAddress.value != "" && document.getElementById("addrAlert").style.visibility === "visible"){
+			   document.getElementById("addrAlert").textContent = "You forgot to fix your error!";
+               document.getElementById("addrAlert").style.visibility = "visible";
 		   }else{
 			   document.getElementById("addrAlert").style.visibility = "hidden";
 		   }
@@ -408,8 +414,11 @@
 		   if(document.getElementById("citAlert").style.visibility === "hidden" && elCity.value == ""){
 			  document.getElementById("citAlert").textContent = "You Must Enter A Value!";
 			  document.getElementById("citAlert").style.visibility = "visible";
-		   }else if (elCity.value == ""){
-			  document.getElementById("citAlert").textContent = "You Must Enter A Value!";
+		   }else if(document.getElementById("citAlert").style.visibility === "visible" && elCity.value == ""){
+				document.getElementById("citAlert").textContent = "You Must Enter A Value!";
+				document.getElementById("citAlert").style.visibility = "visible";
+		   }else if (elCity.value != "" && document.getElementById("citAlert").style.visibility === "visible"){
+			  document.getElementById("citAlert").textContent = "You forgot to fix your error!!";
 			  document.getElementById("citAlert").style.visibility = "visible"
 		   }
 		   else{
@@ -420,7 +429,10 @@
 		   if(document.getElementById("emAlert").style.visibility === "hidden" && email.value == ""){
 			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
 			   document.getElementById("emAlert").style.visibility = "visible";
-		   }else if(email.value == ""){
+		   }else if(document.getElementById("emAlert").style.visibility === "visible" && email.value == ""){
+				document.getElementById("emAlert").textContent = "You Must Enter A Value!";
+				document.getElementById("emAlert").style.visibility = "visible";			   
+		   }else if(email.value != "" && document.getElementById("emAlert").style.visibility === "visible"){
 			   document.getElementById("emAlert").textContent = "You Must Enter A Value!";
 			   document.getElementById("emAlert").style.visibility = "visible";
 		   }else{
@@ -431,7 +443,11 @@
 		   if(document.getElementById("phAlert").style.visibility === "hidden" && phone.value == ""){
 			  document.getElementById("phAlert").textContent = "You Must Enter A Value!";
 			  document.getElementById("phAlert").style.visibility = "visible";
-		   }else if(phone.value == ""){
+		   }else if(document.getElementById("phAlert").style.visibility === "visible" && phone.value == ""){
+				document.getElementById("phAlert").textContent = "You Must Enter A Value!";
+				document.getElementById("phAlert").style.visibility = "visible";
+		   }
+		   else if(phone.value != "" && document.getElementById("phAlert").style.visibility === "visible"){
 			  document.getElementById("phAlert").textContent = "You Must Enter A Value!";
 			  document.getElementById("phAlert").style.visibility = "visible";
 		   }else{
