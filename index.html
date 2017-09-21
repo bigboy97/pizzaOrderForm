@@ -376,10 +376,10 @@
 				isSus = document.getElementById("sausage").checked,
 		   		isGre = document.getElementById("greenpep").checked,
 				isOin = document.getElementById("onion").checked,
-				isExt = document.getElementById("xcheese").checked;
+				isExt = document.getElementById("xcheese").checked,
+				flg = 0;
 		   
 		   //HERE IS AN IF ELSE BLOCK THAT CHECKS PORTIONS OF THE CODE I WAS NOT SURE HOW TO TEST INDIVIDUALY
-		   //>>>>>>>>>>>>>>>You have to check if ther is a messege and a value<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		   
 		   //Errors with the name
 		   if(document.getElementById("nameAlert").style.visibility === "hidden" && fullName.value == ""){
@@ -394,6 +394,7 @@
 		   }
 		   else{
 			   document.getElementById("nameAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
 		   //Errors with address
@@ -408,6 +409,7 @@
                document.getElementById("addrAlert").style.visibility = "visible";
 		   }else{
 			   document.getElementById("addrAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
 		   //Errors with city
@@ -423,6 +425,7 @@
 		   }
 		   else{
 			   document.getElementById("citAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
 		   //Errors with Email
@@ -437,6 +440,7 @@
 			   document.getElementById("emAlert").style.visibility = "visible";
 		   }else{
 			   document.getElementById("emAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
 		   //Errors with Phone
@@ -452,6 +456,7 @@
 			  document.getElementById("phAlert").style.visibility = "visible";
 		   }else{
 			  document.getElementById("phAlert").style.visibility = "hidden";
+			  flg++;
 		   }
 		   
 		   //Errors with radio
@@ -461,6 +466,7 @@
 			   
 		   }else{
 			   document.getElementById("crustSizeAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
 		   //Errors with size
@@ -469,7 +475,8 @@
 			   document.getElementById("pizzaSizeDropDownAlert").style.visibility = "visible";
 			   
 		   }else{
-			  document.getElementById("pizzaSizeDropDownAlert").style.visibility = "hidden"; 
+			  document.getElementById("pizzaSizeDropDownAlert").style.visibility = "hidden";
+			  flg++;
 		   }
 		   
 		   //Errors with toppings
@@ -479,11 +486,14 @@
 			   
 		   }else{
 			   document.getElementById("toppingsCheckBoxAlert").style.visibility = "hidden";
+			   flg++;
 		   }
 		   
-		   
-		   //Always returning false for testing purposes
+		   if(flg == 8){
+			return true;
+		   }else{
 			   return false;
+		   }
 
 //This is old code that is no longer being used, but is keept as a refrence just in case.
 /*		   
