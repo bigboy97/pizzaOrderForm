@@ -149,8 +149,63 @@ the word location with the l capitlized and a collin after it. I might look into
 documentation as to why this is a requirement to using this commmand in the mannor that I did.
 */
 
-header("Location: http://bwm350.webandinteractivemedia.courses/orderForm/orderComplete.html");
+$errHTML = <<<HTML
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript Hands-On Project
 
-//Makeing sure any code that might be below does not get executed when user is redirected
-exit;
+      Author: Colin Hoffman
+   -->
+   <meta charset="utf-8" />
+   <meta id="viewport" content="width=device-width, initial-scale=1.0">
+   <title>JavaScript Hands-On Project</title>
+   <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+ 
+  <!-- BEGIN HEAD -->
+   <header>
+      <h1>
+         JavaScript Hands-On Project
+      </h1>
+   </header>
+	<!-- END HEAD -->
+  
+   <section>
+     
+      <h2>Pizza Order Form</h2>
+      
+      
+      <h3>Oh no... We Have an issue</h3>
+      <p>There was a few errors in your form. You can click <a href="index.html"><span>here</span></a> to try agian.</p>
+     <h4>List of Errors</h4>
+     <ul>
+         <li>$nameErr</li>
+         <li>$addrErr</li>
+         <li>$cityErr</li>
+         <li>$emailErr</li>
+         <li>$phoneErr</li>
+         <li>$crustErr</li>
+         <li>$sizeErr</li>
+         <li>$toppingsErr</li>
+     </ul>
+   </section>
+</body>
+</html>
+HTML;
+
+
+if($nameErr == "" && $addrErr == "" && $cityErr == "" && $emailErr == "" && $phoneErr == "" && $crustErr == "" && $sizeErr == "" && $toppingsErr == ""){
+    header("Location: http://bwm350.webandinteractivemedia.courses/orderForm/orderComplete.html");
+    
+    //Makeing sure any code that might be below does not get executed when user is redirected
+    exit;
+}else{
+    echo($errHTML);
+}
+
+
 ?>
