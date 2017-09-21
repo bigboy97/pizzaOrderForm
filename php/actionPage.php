@@ -17,7 +17,7 @@ examples, since I don't pre-plan my code. This way it is simpler for somone othe
 //EMPTY VARS DECL AND INIT
 $nameErr = $emailErr = $addrErr = $cityErr = $phoneErr = $crustErr = $sizeErr = $toppingsErr = "";
 $name = $email = $instructions = $address = $city = $phone = $crust = $size = $toppings = "";
-$subject = "A Copy Of You Order";
+$subject = "A Copy Of Your Order";
 
 /*
 This function was taken from W3 schools. This is one of the reasons why I chose to follow there
