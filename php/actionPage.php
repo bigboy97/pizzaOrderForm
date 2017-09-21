@@ -17,6 +17,7 @@ examples, since I don't pre-plan my code. This way it is simpler for somone othe
 //EMPTY VARS DECL AND INIT
 $nameErr = $emailErr = $addrErr = $cityErr = $phoneErr = $crustErr = $sizeErr = $toppingsErr = "";
 $name = $email = $instructions = $address = $city = $phone = $crust = $size = $toppings = "";
+$subject = "A Copy Of You Order";
 
 /*
 This function was taken from W3 schools. This is one of the reasons why I chose to follow there
@@ -122,21 +123,21 @@ The values for the raido, dropDown, and checkBoxes are all pre-defined. Therefor
 that needs to be done is to check if is has a value or not.
 */
 if(empty($_GET["crust"])){
-    $crustErr = "A crust type is required"
+    $crustErr = "A crust type is required";
 }else{
    $crust = $_GET["crust"];
 }//end esle
 
 
 if(empty($_GET["size"])){
-    $sizeErr = "A size is required"
+    $sizeErr = "A size is required";
 }else{
    $size = $_GET["size"];
 }//end esle
 
 
 if(empty($_GET["toppings"])){
-    $toppingsErr = "A topping is required"
+    $toppingsErr = "A topping is required";
 }else{
    $toppings = $_GET["toppings"];
 }//end esle
@@ -199,10 +200,15 @@ HTML;
 
 
 if($nameErr == "" && $addrErr == "" && $cityErr == "" && $emailErr == "" && $phoneErr == "" && $crustErr == "" && $sizeErr == "" && $toppingsErr == ""){
-    header("Location: http://bwm350.webandinteractivemedia.courses/orderForm/orderComplete.html");
+	
+	$messege = "Your name:\t" . $name . "\nAddress:\t" . $address . "\nCity:\t" . $city . "\nEmail:\t" . $email . "\nPhone Number:\t" . $phone . "\nCrust Type:\t" . $crust . "\nSize:\t" . $size . "\nToppings:\t" . $toppings . "\nMessege:\t" . $instructions;
+	
+	mail($email, $subject, $messege);
+	
+	header("Location: http://bwm350.webandinteractivemedia.courses/orderForm/orderComplete.html");
     
     //Makeing sure any code that might be below does not get executed when user is redirected
-    exit;
+    //exit;
 }else{
     echo($errHTML);
 }
