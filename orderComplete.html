@@ -37,6 +37,21 @@
       <!-- BEGINING OF ORDER FORM -->
       <h3>Congragulations!</h3>
       <p>You form has been submited! You can click <a href="index.html"><span>here</span></a> to submit another order!</p>
+      <h4 style="margin: 10px 10px 10px 10px;">Your order is outlined below...</h4>
+      <ul style="margin: 25px 25px 25px 25px;">
+      	<li id="li1"><script>document.getElementById("li1").innerHTML = sessionStorage.getItem("name");</script></li>
+      	<li id="li2"><script>document.getElementById("li2").innerHTML = sessionStorage.getItem("address");</script></li>
+      	<li id="li3"><script>document.getElementById("li3").innerHTML = sessionStorage.getItem("city");</script></li>
+      	<li id="li4"><script>document.getElementById("li4").innerHTML = sessionStorage.getItem("email");</script></li>
+      	<li id="li5"><script>document.getElementById("li5").innerHTML = sessionStorage.getItem("phone");</script></li>
+      	<li id="li6"><script>document.getElementById("li6").innerHTML = sessionStorage.getItem("crust");</script></li>
+      	<li id="li7"><script>document.getElementById("li7").innerHTML = sessionStorage.getItem("topping1");</script></li>
+      	<li id="li8"><script>document.getElementById("li8").innerHTML = sessionStorage.getItem("topping2");</script></li>
+      	<li id="li9"><script>document.getElementById("li9").innerHTML = sessionStorage.getItem("topping3");</script></li>
+      	<li id="li10"><script>document.getElementById("li10").innerHTML = sessionStorage.getItem("topping4");</script></li>
+      	<li id="li11"><script>document.getElementById("li11").innerHTML = sessionStorage.getItem("topping5");</script></li>
+      	<li id="li12"><script>document.getElementById("li12").innerHTML = sessionStorage.getItem("topping6");</script></li>
+      </ul>
       <figure>
           <img src="images/pizzaSpinning.gif" alt="spinning pizza photo" />
       </figure>

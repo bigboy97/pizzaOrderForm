@@ -286,7 +286,37 @@ function ready(){
     }
     
     if(flg == 8){
-     return true;
+    	sessionStorage.setItem("name", fullName.value);
+		sessionStorage.setItem("address", streetAddress.value);
+		sessionStorage.setItem("city", elCity.value);
+		sessionStorage.setItem("email", email.value);
+		sessionStorage.setItem("phone", phone.value);
+		if(thnCrust === true){
+			sessionStorage.setItem("crust", thinCrust.value);
+		}
+		if(dpDish === true){
+			sessionStorage.setItem("curst", thickCrust.value);
+		}
+		sessionStorage.setItem("size", size.options[size.selectedIndex].value);
+		if(isChz === true){
+			sessionStorage.setItem("topping1", cheese.value);
+		}
+		if(isPep === true){
+			sessionStorage.setItem("topping2", pepperoni.value);
+		}
+		if(isSus === true){
+			sessionStorage.setItem("topping3", sausage.value);
+		}
+		if(isGre === true){
+			sessionStorage.setItem("topping4", greenpep.value);
+		}
+		if(isOin === true){
+			sessionStorage.setItem("topping5", onion.value);
+		}
+		if(isExt === true){
+			sessionStorage.setItem("topping6", xcheese.value);
+		}
+		return true;
     }else{
         return false;
     }
